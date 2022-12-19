@@ -53,7 +53,7 @@ const Product = () => {
 					</div>
 					<div className="right">
 						<h1 className="title">{data?.attributes?.title}</h1>
-						<span className="price">{data?.attributes?.price}</span>
+						<span className="price">${data?.attributes?.price}</span>
 						<p>{data?.attributes?.desc}</p>
 						<div className="quantity">
 							<button
