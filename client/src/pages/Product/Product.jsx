@@ -6,6 +6,8 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import BalanceIcon from "@mui/icons-material/Balance";
 import useFetch from "../../hooks/useFetch";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/cartReducer";
 
 const Product = () => {
 	const id = useParams().id;
@@ -13,7 +15,7 @@ const Product = () => {
 	const [quantity, setQuantity] = useState(0);
 
 	const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
-
+	const dispatch = useDispatch();
 	return (
 		<div className="product">
 			{loading ? (
@@ -63,7 +65,21 @@ const Product = () => {
 							{quantity}
 							<button onClick={() => setQuantity(quantity + 1)}>+</button>
 						</div>
-						<button className="add">
+						<button
+							className="add"
+							onClick={() =>
+								dispatch(
+									addToCart({
+										id: data.id,
+										title: data.attributes.title,
+										desc: data.attributes.desc,
+										img: data.attributes.img.data.attributes.url,
+										price: data.attributes.price,
+										quantity,
+									})
+								)
+							}
+						>
 							<AddShoppingCartIcon />
 							ADD TO CART
 						</button>
