@@ -1,6 +1,7 @@
 .cart {
 	position: absolute;
 	right: 8px;
+	width: 400px;
 	top: 60px;
 	z-index: 999;
 	background-color: white;
@@ -70,10 +71,13 @@
 		cursor: pointer;
 		border: none;
 		font-weight: 500;
+		margin-bottom: 5px;
 	}
 
 	.reset {
-		color: red;
+		background-color: red;
+		padding: 5px;
+		color: white;
 		font-size: 12px;
 		cursor: pointer;
 	}
